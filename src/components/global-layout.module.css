@@ -1,0 +1,19 @@
+.container {
+  max-width: 800px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.header {
+  height: 40px;
+  color: rgb(229, 9, 20);
+  font-size: 20px;
+}
+
+.header > a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.main {
+}
