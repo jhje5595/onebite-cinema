@@ -1,0 +1,25 @@
+.index_container {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.recommended_movie_section {
+  margin-bottom: 40px;
+}
+
+.recommended_movie_item_container {
+  display: flex;
+  gap: 5px;
+  margin-top: 20px;
+}
+
+.registerd_movie_section {
+  margin-bottom: 40px;
+}
+
+.registerd_movie_item_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px;
+  margin-top: 20px;
+}

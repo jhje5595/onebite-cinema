@@ -11,7 +11,6 @@ export default function SearchableLayout({
   const [search, setSearch] = useState("");
   const router = useRouter();
   const q = router.query.q as string;
-  console.log("현재 search : ", search);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);

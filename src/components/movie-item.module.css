@@ -1,0 +1,6 @@
+.movie_item_container {
+}
+
+.movie_item_container > img {
+  max-width: 260px;
+}
