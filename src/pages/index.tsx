@@ -3,14 +3,31 @@ import { ReactNode } from "react";
 import style from "./index.module.css";
 import movies from "@/mock/mock.json";
 import { MovieItem } from "@/components/movie-item";
+import { fetchMovie } from "@/lib/fetch-movie";
+import { InferGetServerSidePropsType } from "next";
+import { fetchRandomMovie } from "@/lib/fetch-random-movie";
 
-export default function Home() {
+export const getServerSideProps = async () => {
+  const [allMovies, recoMovies] = await Promise.all([
+    fetchMovie(),
+    fetchRandomMovie(),
+  ]);
+
+  return {
+    props: { allMovies, recoMovies },
+  };
+};
+
+export default function Home({
+  allMovies,
+  recoMovies,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <div className={style.index_container}>
       <section className={style.recommended_movie_section}>
         지금 가장 추천하는 영화
         <div className={style.recommended_movie_item_container}>
-          {movies.slice(0, 3).map((movie) => (
+          {recoMovies.map((movie) => (
             <MovieItem key={movie.id} {...movie} width={260} />
           ))}
         </div>
@@ -18,7 +35,7 @@ export default function Home() {
       <section className={style.registered_movie_section}>
         등록된 모든 영화
         <div className={style.registerd_movie_item_container}>
-          {movies.map((movie) => (
+          {allMovies.map((movie) => (
             <MovieItem key={movie.id} {...movie} width={150} />
           ))}
         </div>
